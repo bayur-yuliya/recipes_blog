@@ -3,14 +3,13 @@ from django.http import HttpResponse, HttpResponseNotFound
 
 
 menu = [
-        {"title": "Добавить статью", 'url_name': 'add_page'},
-        {"title": "Обратная связь", 'url_name': 'contact'},
-        {"title": "Войти", 'url_name': 'login'},
-        ]
+    {"title": "Добавить статью", "url_name": "add_page"},
+    {"title": "Обратная связь", "url_name": "contact"},
+    {"title": "Войти", "url_name": "login"},
+]
 
 
 def index(request):
-
     data = {
         "title": "Главная страница",
         "menu": menu,
@@ -19,24 +18,24 @@ def index(request):
 
 
 def about(request):
-    return render(request, "recipes_app/about.html", {"title": "О нас", 'menu': menu})
+    return render(request, "recipes_app/about.html", {"title": "О нас", "menu": menu})
 
 
 def add_page(request):
-    return HttpResponse('Добавить статью')
+    return HttpResponse("Добавить статью")
 
 
 def contact(request):
-    return HttpResponse('Обратная связь')
+    return HttpResponse("Обратная связь")
 
 
 def login(request):
-    return HttpResponse('Войти')
+    return HttpResponse("Войти")
 
 
 def post(request, post_id):
-    data = {'data': post_id}
-    return render(request, 'recipes_app/post.html', context=data)
+    data = {"data": post_id}
+    return render(request, "recipes_app/post.html", context=data)
 
 
 def show_categories(request, cat_id):
