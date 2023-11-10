@@ -11,6 +11,6 @@ urlpatterns = [
     path("add_page/", views.add_page, name="add_page"),
     path("contact/", views.contact, name="contact"),
     path("login/", views.login, name="login"),
-    path("post/<int:post_id>", views.post, name="post"),
-    path("category/<int:cat_id>", views.show_categories, name="show_categories"),
+    path("recipe/<int:recipe_id>/", views.post, name="recipe"),
+    path("category/<int:cat_id>/", views.show_categories, name="show_categories"),
 ]

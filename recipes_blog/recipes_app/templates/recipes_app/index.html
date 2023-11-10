@@ -3,13 +3,14 @@
 {% block content %}
 <h1>{{title}}</h1>
 
-{%  for el in data_db  %}
+{%  for el in recipes  %}
 	{% if el.is_published  %}
 		<hr>
 		{{ el.id }}
 		{{ el.title }} <br>
 		Ingredients: {{ el.ingredients }} <br>
-		Time: {{ el.time }}
+		Recipe: {{ el.recipe_text }} <br>
+		Time: {{ el.cooking_time }}
 		Quantity of servings: {{ el.quantity_of_servings }}
 	{%  endif  %}
 {%  endfor  %}

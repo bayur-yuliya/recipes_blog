@@ -1,22 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
-
-data_db = [
-    {'id': 1, 'title': 'Apple pie', "ingredients": "Apples, eggs, flour", 'time': "1 hour", "quantity_of_servings": 4,
-     "is_published": True},
-    {'id': 2, 'title': 'Cherry pie', "ingredients": "Cherry, eggs, flour", 'time': "1 hour", "quantity_of_servings": 4,
-     "is_published": False},
-    {'id': 3, 'title': 'Pear pie', "ingredients": "Pears, eggs, flour", 'time': "1 hour", "quantity_of_servings": 4,
-     "is_published": True},
-]
+from .models import Recipe
 
 
 def index(request):
+
+    recipes = Recipe.objects.all()
     data = {
         "title": "Главная страница",
-        "menu": menu,
-        'data_db': data_db,
+        "recipes": recipes,
     }
     return render(request, "recipes_app/index.html", context=data)
 
@@ -37,8 +30,9 @@ def login(request):
     return HttpResponse("Войти")
 
 
-def post(request, post_id):
-    data = {"data": post_id}
+def post(request, recipe_id):
+    recipes = Recipe.objects.get(id=recipe_id)
+    data = {"data": recipes}
     return render(request, "recipes_app/post.html", context=data)
 
 
