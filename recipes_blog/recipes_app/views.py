@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
 
-menu = [
-    {"title": "Добавить статью", "url_name": "add_page"},
-    {"title": "Обратная связь", "url_name": "contact"},
-    {"title": "Войти", "url_name": "login"},
+data_db = [
+    {'id': 1, 'title': 'Apple pie', "ingredients": "Apples, eggs, flour", 'time': "1 hour", "quantity_of_servings": 4,
+     "is_published": True},
+    {'id': 2, 'title': 'Cherry pie', "ingredients": "Cherry, eggs, flour", 'time': "1 hour", "quantity_of_servings": 4,
+     "is_published": False},
+    {'id': 3, 'title': 'Pear pie', "ingredients": "Pears, eggs, flour", 'time': "1 hour", "quantity_of_servings": 4,
+     "is_published": True},
 ]
 
 
@@ -13,12 +16,13 @@ def index(request):
     data = {
         "title": "Главная страница",
         "menu": menu,
+        'data_db': data_db,
     }
     return render(request, "recipes_app/index.html", context=data)
 
 
 def about(request):
-    return render(request, "recipes_app/about.html", {"title": "О нас", "menu": menu})
+    return render(request, "recipes_app/about.html", {"title": "О нас"})
 
 
 def add_page(request):
