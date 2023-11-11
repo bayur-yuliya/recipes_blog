@@ -12,6 +12,7 @@
 		Recipe: {{ el.recipe_text }} <br>
 		Time: {{ el.cooking_time }}
 		Quantity of servings: {{ el.quantity_of_servings }}
+		<a href="{{ el.get_absolute_url  }}">Подробнее</a>
 	{%  endif  %}
 {%  endfor  %}
 {% endblock %}

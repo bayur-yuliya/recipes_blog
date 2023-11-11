@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 
 from .models import Recipe
@@ -30,8 +30,8 @@ def login(request):
     return HttpResponse("Войти")
 
 
-def post(request, recipe_id):
-    recipes = Recipe.objects.get(id=recipe_id)
+def post(request, recipe_slug):
+    recipes = get_object_or_404(Recipe, slug=recipe_slug)
     data = {"data": recipes}
     return render(request, "recipes_app/post.html", context=data)
 
