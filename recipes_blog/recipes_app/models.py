@@ -17,10 +17,8 @@ class Recipe(models.Model):
         return str(self.title)
 
     class Meta:
-        ordering = ['-time_create']
-        indexes = [
-            models.Index(fields=['-time_create'])
-        ]
+        ordering = ["-time_create"]
+        indexes = [models.Index(fields=["-time_create"])]
 
     def get_absolute_url(self):
-        return reverse('recipe', kwargs={"recipe_slug": self.slug})
+        return reverse("recipe", kwargs={"recipe_slug": self.slug})

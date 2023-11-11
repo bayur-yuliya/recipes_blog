@@ -5,7 +5,6 @@ from .models import Recipe
 
 
 def index(request):
-
     recipes = Recipe.objects.all()
     data = {
         "title": "Главная страница",
