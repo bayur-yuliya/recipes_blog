@@ -1,0 +1,10 @@
+{% extends 'recipes_app/base.html' %}
+
+{% block content %}
+    {{ data.id }}
+    {{ data.title }} <br>
+    Ingredients: {{ data.ingredients }} <br>
+    Recipe: {{ data.recipe_text }} <br>
+    Time: {{ data.cooking_time }}
+    Quantity of servings: {{ data.quantity_of_servings }}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'recipes_app/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+
+{%  for el in recipes  %}
+	{% if el.is_published  %}
+		<hr>
+		{{ el.id }}
+		{{ el.title }} <br>
+		Ingredients: {{ el.ingredients }} <br>
+		Recipe: {{ el.recipe_text }} <br>
+		Time: {{ el.cooking_time }}
+		Quantity of servings: {{ el.quantity_of_servings }}
+		<a href="{{ el.get_absolute_url  }}">Подробнее</a>
+	{%  endif  %}
+{%  endfor  %}
+{% endblock %}
