@@ -160,3 +160,6 @@ cython_debug/
 .idea/
 
 main.py
+
+recipes_app\__pycache__
+recipes_blog\__pycache__
