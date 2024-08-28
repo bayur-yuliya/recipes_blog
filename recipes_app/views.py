@@ -18,11 +18,11 @@ def about(request):
 
 
 def add_page(request):
-    return HttpResponse("Добавить статью")
+    return render(request, "recipes_app/add_page.html", {"title": "Добавиление статьи"})
 
 
 def contact(request):
-    return HttpResponse("Обратная связь")
+    return render(request, "recipes_app/contact.html", {"title": "Обратная связь"})
 
 
 def login(request):

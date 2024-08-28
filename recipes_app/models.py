@@ -10,7 +10,7 @@ class PublishManager(models.Manager):
 class Recipe(models.Model):
     class Status(models.IntegerChoices):
         DRAFT = 0, "Черновик"
-        PUBLISHED = 1, 'Опубликовано'
+        PUBLISHED = 1, "Опубликовано"
 
     title = models.CharField(max_length=255)
     ingredients = models.TextField(blank=True)
