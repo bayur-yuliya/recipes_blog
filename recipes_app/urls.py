@@ -12,5 +12,4 @@ urlpatterns = [
     path("contact/", views.contact, name="contact"),
     path("login/", views.login, name="login"),
     path("recipe/<slug:recipe_slug>/", views.post, name="recipe"),
-    path("category/<int:cat_id>/", views.show_categories, name="show_categories"),
 ]

@@ -35,9 +35,5 @@ def post(request, recipe_slug):
     return render(request, "recipes_app/post.html", context=data)
 
 
-def show_categories(request, cat_id):
-    return index(request)
-
-
 def page_not_found(request, exception):
     return HttpResponseNotFound("<h1>Страница не найдена. </h1>")
