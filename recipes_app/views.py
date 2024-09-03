@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 
+from .forms import RegisterUserForm
 from .models import Recipe
 
 
@@ -26,7 +27,14 @@ def contact(request):
 
 
 def login(request):
-    return HttpResponse("Войти")
+    if request.method == "GET":
+        form = RegisterUserForm()
+        return render(request, "register/login.html", {"form": form})
+
+    form = RegisterUserForm(request.POST)
+    if form.is_valid():
+        form.save()
+    return render(request, "register/login.html", {"form": form})
 
 
 def post(request, recipe_slug):
