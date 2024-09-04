@@ -53,5 +53,9 @@ def ingredients_by_slug(request, ingredient_slug):
     )
 
 
+def archive(request, year):
+    return HttpResponse(f"Архив рецептов за {year} год")
+
+
 def page_not_found(request, exception):
     return HttpResponseNotFound("<h1>Страница не найдена. </h1>")
