@@ -1,4 +1,4 @@
-from django.urls import path, register_converter, re_path
+from django.urls import path, register_converter
 
 from . import views
 from . import converters
@@ -18,5 +18,5 @@ urlpatterns = [
         views.ingredients_by_slug,
         name="ingredients_by_slug",
     ),
-    re_path(r"archive/(?P<year>[0-9]{4})/", views.archive, name="archive"),
+    path("archive/<year4:year>/", views.archive, name="archive"),
 ]

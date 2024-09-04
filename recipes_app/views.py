@@ -54,6 +54,8 @@ def ingredients_by_slug(request, ingredient_slug):
 
 
 def archive(request, year):
+    if request.GET:
+        print(request.GET)
     return HttpResponse(f"Архив рецептов за {year} год")
 
 
