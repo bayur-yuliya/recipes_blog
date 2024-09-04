@@ -12,4 +12,10 @@ urlpatterns = [
     path("contact/", views.contact, name="contact"),
     path("login/", views.login, name="login"),
     path("recipe/<slug:recipe_slug>/", views.post, name="recipe"),
+    path("ingredients/<int:ingredient>/", views.ingredients, name="ingredients"),
+    path(
+        "ingredients/<slug:ingredient_slug>/",
+        views.ingredients_by_slug,
+        name="ingredients_by_slug",
+    ),
 ]

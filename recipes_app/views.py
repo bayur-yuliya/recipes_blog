@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponse
 
 from .forms import RegisterUserForm
 from .models import Recipe
@@ -41,6 +41,16 @@ def post(request, recipe_slug):
     recipes = get_object_or_404(Recipe, slug=recipe_slug)
     data = {"data": recipes}
     return render(request, "recipes_app/post.html", context=data)
+
+
+def ingredients(request, ingredient):
+    return HttpResponse(f"<h1> Поиск по id ингридиентов {ingredient} </h1>")
+
+
+def ingredients_by_slug(request, ingredient_slug):
+    return HttpResponse(
+        f"<h1> Поиск по ингридиентам, через slug {ingredient_slug} </h1>"
+    )
 
 
 def page_not_found(request, exception):
