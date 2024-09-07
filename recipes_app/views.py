@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound, HttpResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 
 from .forms import RegisterUserForm
 from .models import Recipe
@@ -54,8 +56,9 @@ def ingredients_by_slug(request, ingredient_slug):
 
 
 def archive(request, year):
-    if request.GET:
-        print(request.GET)
+    if year > 2024:
+        uri = reverse("ingredients_by_slug", args=("apple",))
+        return redirect()
     return HttpResponse(f"Архив рецептов за {year} год")
 
 
