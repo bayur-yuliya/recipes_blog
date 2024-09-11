@@ -58,7 +58,7 @@ def ingredients_by_slug(request, ingredient_slug):
 def archive(request, year):
     if year > 2024:
         uri = reverse("ingredients_by_slug", args=("apple",))
-        return redirect()
+        return redirect(uri)
     return HttpResponse(f"Архив рецептов за {year} год")
 
 
