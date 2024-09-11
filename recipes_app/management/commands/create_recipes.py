@@ -16,7 +16,7 @@ class Command(BaseCommand):
                 4,
                 1,
                 "sharlotka1",
-                Category.objects.get(id=2)
+                Category.objects.get(id=2),
             ),
             (
                 "Кабачки по-корейски",
