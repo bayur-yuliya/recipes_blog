@@ -19,4 +19,5 @@ urlpatterns = [
         name="ingredients_by_slug",
     ),
     path("archive/<year4:year>/", views.archive, name="archive"),
+    path("category/", views.categories, name="categories"),
 ]

@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 from .forms import RegisterUserForm
-from .models import Recipe
+from .models import Recipe, Category
 
 
 def index(request):
@@ -26,6 +26,13 @@ def add_page(request):
 
 def contact(request):
     return render(request, "recipes_app/contact.html", {"title": "Обратная связь"})
+
+
+def categories(request):
+    categories = Category.objects.all()
+    return render(
+        request, "recipes_app/categories.html", context={"categories": categories}
+    )
 
 
 def login(request):
