@@ -8,7 +8,12 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-3. Run web server
+3. Run command to create test recipes
+```
+python manage.py create_recipes
+```
+
+4.Run web server
 ```
 python manage.py runserver
 ```

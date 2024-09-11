@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound, HttpResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 
 from .forms import RegisterUserForm
-from .models import Recipe
+from .models import Recipe, Category
 
 
 def index(request):
@@ -24,6 +26,13 @@ def add_page(request):
 
 def contact(request):
     return render(request, "recipes_app/contact.html", {"title": "Обратная связь"})
+
+
+def categories(request):
+    categories = Category.objects.all()
+    return render(
+        request, "recipes_app/categories.html", context={"categories": categories}
+    )
 
 
 def login(request):
@@ -51,6 +60,13 @@ def ingredients_by_slug(request, ingredient_slug):
     return HttpResponse(
         f"<h1> Поиск по ингридиентам, через slug {ingredient_slug} </h1>"
     )
+
+
+def archive(request, year):
+    if year > 2024:
+        uri = reverse("ingredients_by_slug", args=("apple",))
+        return redirect(uri)
+    return HttpResponse(f"Архив рецептов за {year} год")
 
 
 def page_not_found(request, exception):

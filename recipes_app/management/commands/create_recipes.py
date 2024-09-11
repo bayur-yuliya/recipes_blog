@@ -1,12 +1,13 @@
 from django.core.management.base import BaseCommand
 
-from recipes_app.models import Recipe
+from recipes_app.models import Recipe, Category
 
 
 class Command(BaseCommand):
     help = """the command generates a recipes"""
 
     def handle(self, *args, **options):
+        categories = ("Суп", "Десерт", "Закуска")
         recipes = (
             (
                 "Шарлотка",
@@ -15,6 +16,7 @@ class Command(BaseCommand):
                 4,
                 1,
                 "sharlotka1",
+                Category.objects.get(id=2),
             ),
             (
                 "Кабачки по-корейски",
@@ -23,6 +25,7 @@ class Command(BaseCommand):
                 4,
                 1,
                 "kabachki-po-korejski",
+                Category.objects.get(id=3),
             ),
             (
                 "Абрикосовое варенье",
@@ -31,8 +34,11 @@ class Command(BaseCommand):
                 1,
                 1,
                 "abrikosovoe-varene-s-mindalem",
+                Category.objects.get(id=2),
             ),
         )
+        for category in categories:
+            Category.objects.create(name=category)
 
         for recipe in recipes:
             Recipe.objects.create(
@@ -43,6 +49,7 @@ class Command(BaseCommand):
                 quantity_of_servings=recipe[3],
                 is_published=recipe[4],
                 slug=recipe[5],
+                category_id=recipe[6],
             )
 
         self.stdout.write(self.style.SUCCESS("Все прошло успешно!"))
