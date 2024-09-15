@@ -3,7 +3,7 @@ from django.http import HttpResponseNotFound, HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, RecipeForm
 from .models import Recipe, Category
 
 
@@ -21,7 +21,13 @@ def about(request):
 
 
 def add_page(request):
-    return render(request, "recipes_app/add_page.html", {"title": "Добавиление статьи"})
+    if request.method == "GET":
+        form = RecipeForm()
+        return render(request, "recipes_app/add_page.html", {"form": form})
+    form = RecipeForm(request.POST)
+    if form.is_valid():
+        form.save()
+    return render(request, "recipes_app/add_page.html", {"form": form})
 
 
 def contact(request):

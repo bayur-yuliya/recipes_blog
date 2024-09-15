@@ -7,7 +7,7 @@
 	{% if el.is_published  %}
 		<hr>
 		{{ el.id }}
-		{{ el.title }} <br>
+        <a href="{% url 'recipe' el.slug %}">{{ el.title }}</a><br>
 		Ingredients: {{ el.ingredients }} <br>
 		Recipe: {{ el.recipe_text }} <br>
 		Time: {{ el.cooking_time }}

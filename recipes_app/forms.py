@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Recipe
+from .models import Recipe, Category
 
 
 class RecipeForm(forms.ModelForm):
@@ -13,6 +13,9 @@ class RecipeForm(forms.ModelForm):
     quantity_of_servings = forms.IntegerField()
     is_published = forms.BooleanField()
     slug = forms.SlugField()
+    category_id = forms.ModelChoiceField(
+        queryset=Category.objects.all(), initial=0, empty_label="(Nothing)"
+    )
 
     class Meta:
         model = Recipe
@@ -23,6 +26,7 @@ class RecipeForm(forms.ModelForm):
             "cooking_time",
             "quantity_of_servings",
             "slug",
+            "category_id",
         )
 
 
