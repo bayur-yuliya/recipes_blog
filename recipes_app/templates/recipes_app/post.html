@@ -2,7 +2,7 @@
 
 {% block content %}
     {{ data.id }}
-    {{ data.title }} <br>
+    <a href="{%  url 'edit_recipe'  data.pk %}">{{ data.title }} </a><br>
     Ingredients: {{ data.ingredients }} <br>
     Recipe: {{ data.recipe_text }} <br>
     Time: {{ data.cooking_time }}

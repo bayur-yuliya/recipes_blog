@@ -44,6 +44,17 @@ def add_page(request):
     return render(request, "recipes_app/add_page.html", {"form": form})
 
 
+def edit_recipe(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk)
+    if request.method == "GET":
+        form = RecipeForm(instance=recipe)
+        return render(request, "recipes_app/edit_recipe.html", {"form": form})
+    form = RecipeForm(request.POST, instance=recipe)
+    if form.is_valid():
+        form.save()
+    return render(request, "recipes_app/edit_recipe.html", {"form": form})
+
+
 def post(request, recipe_slug):
     recipes = get_object_or_404(Recipe, slug=recipe_slug)
     data = {"data": recipes}
