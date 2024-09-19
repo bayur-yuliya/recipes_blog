@@ -4,7 +4,7 @@
 {% block content %}
 <h1>{{title}}</h1>
 
-{%  for el in recipes  %}
+{%  for el in page_obj  %}
 	{% if el.is_published  %}
 		<hr>
 		{{ el.id }}
@@ -14,6 +14,17 @@
 		Time: {{ el.cooking_time }}
 		Quantity of servings: {{ el.quantity_of_servings }}
 		<a href="{{ el.get_absolute_url  }}">Подробнее</a>
+
 	{%  endif  %}
 {%  endfor  %}
+
+<nav>
+	<ul>
+		{%  for p in page_obj.paginator.page_range  %}
+		<li>
+			<a href="?page={{  p  }}">{{  p  }}</a>
+		</li>
+		{%  endfor  %}
+	</ul>
+</nav>
 {% endblock %}

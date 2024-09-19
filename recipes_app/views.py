@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound, HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from .forms import RegisterUserForm, RecipeForm
 from .models import Recipe, Category
@@ -9,9 +10,13 @@ from .models import Recipe, Category
 
 def index(request):
     recipes = Recipe.published.filter(is_published=True)
+    paginator = Paginator(recipes, 2)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     data = {
         "title": "Главная страница",
         "recipes": recipes,
+        "page_obj": page_obj,
     }
     return render(request, "recipes_app/index.html", context=data)
 
