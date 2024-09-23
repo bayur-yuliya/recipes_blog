@@ -92,4 +92,4 @@ def archive(request, year):
 
 
 def page_not_found(request, exception):
-    return HttpResponseNotFound("<h1>Страница не найдена. </h1>")
+    return render(request, "page_not_found/page_not_found.html")
