@@ -4,7 +4,8 @@
     {{ data.id }}
     <a href="{%  url 'edit_recipe'  data.pk %}">{{ data.title }} </a><br>
     Ingredients: {{ data.ingredients }} <br>
-    Recipe: {{ data.recipe_text }} <br>
     Time: {{ data.cooking_time }}
     Quantity of servings: {{ data.quantity_of_servings }}
+    <hr>
+    Recipe: {{ data.recipe_text }} <br>
 {% endblock %}

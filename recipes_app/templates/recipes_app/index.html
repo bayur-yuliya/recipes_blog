@@ -8,12 +8,11 @@
 	{% if el.is_published  %}
 		<hr>
 		{{ el.id }}
-        <a href="{% url 'recipe' el.slug %}">{{ el.title }}</a><br>
+        <a href="{% url 'recipe' el.id %}">{{ el.title }}</a><br>
 		Ingredients: {{ el.ingredients }} <br>
-		Recipe: {{ el.recipe_text }} <br>
 		Time: {{ el.cooking_time }}
 		Quantity of servings: {{ el.quantity_of_servings }}
-		<a href="{{ el.get_absolute_url  }}">Подробнее</a>
+		<a href="{% url 'recipe' el.id %}">Подробнее</a>
 
 	{%  endif  %}
 {%  endfor  %}

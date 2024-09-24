@@ -15,7 +15,6 @@ def index(request):
     page_obj = paginator.get_page(page_number)
     data = {
         "title": "Главная страница",
-        "recipes": recipes,
         "page_obj": page_obj,
     }
     return render(request, "recipes_app/index.html", context=data)
@@ -46,7 +45,7 @@ def add_page(request):
     form = RecipeForm(request.POST)
     if form.is_valid():
         form.save()
-    return render(request, "recipes_app/add_page.html", {"form": form})
+    return redirect(reverse('index'))
 
 
 def edit_recipe(request, pk):
@@ -57,11 +56,11 @@ def edit_recipe(request, pk):
     form = RecipeForm(request.POST, instance=recipe)
     if form.is_valid():
         form.save()
-    return render(request, "recipes_app/edit_recipe.html", {"form": form})
+    return redirect(reverse('recipe', kwargs={"pk": pk}))
 
 
-def post(request, recipe_slug):
-    recipes = get_object_or_404(Recipe, slug=recipe_slug)
+def post(request, pk):
+    recipes = get_object_or_404(Recipe, pk=pk)
     data = {"data": recipes}
     return render(request, "recipes_app/post.html", context=data)
 
