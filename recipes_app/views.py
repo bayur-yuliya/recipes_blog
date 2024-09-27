@@ -10,7 +10,7 @@ from .models import Recipe, Category
 
 def index(request):
     recipes = Recipe.published.filter(is_published=True)
-    paginator = Paginator(recipes, 2)
+    paginator = Paginator(recipes, 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     data = {
