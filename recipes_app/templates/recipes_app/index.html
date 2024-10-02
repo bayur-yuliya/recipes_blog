@@ -2,7 +2,24 @@
 
 {% block index %}{% endblock %}
 {% block content %}
-<h1>{{title}}</h1>
+
+<p>{{  float|divisibleby:'3'  }}</p>
+<p>{{  value|add:'30'  }}</p>
+<p>{{  lst | length  }}</p>
+<p>{{  set|length  }}</p>
+<p>{{  dict.key1  }}   {{  dict.key2  }}</p>
+<p>{{  lst_str|join:" | "  }}</p>
+
+<hr>
+<p>{{  str|upper  }}</p>
+<p>{{  str|lower  }}</p>
+
+<hr>
+<p>{{  str|slugify  }}</p>
+<p>{{  url  }}</p>
+
+<hr>
+<h1>{{  title  }}</h1>
 
 {%  for el in page_obj  %}
 	{% if el.is_published  %}
