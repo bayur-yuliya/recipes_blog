@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseNotFound, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.core.paginator import Paginator
-from django.template.defaultfilters import slugify
 
 from .forms import RegisterUserForm, RecipeForm
 from .models import Recipe, Category
@@ -17,14 +16,6 @@ def index(request):
     data = {
         "title": "Главная страница",
         "page_obj": page_obj,
-        "str": "The Main Page",
-        'value': 12,
-        'float': 3.9,
-        'lst': [10, 2, 'sdf', True],
-        "lst_str": ['The', 'Main', 'Page'],
-        'set': {1, 2, 3, 4, 5},
-        'dict': {'key1':'value1', 'key2': 'value2'},
-        "url": slugify("The Main Page"),
     }
     return render(request, "recipes_app/index.html", context=data)
 

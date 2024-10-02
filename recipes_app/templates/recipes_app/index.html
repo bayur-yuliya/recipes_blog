@@ -3,34 +3,21 @@
 {% block index %}{% endblock %}
 {% block content %}
 
-<p>{{  float|divisibleby:'3'  }}</p>
-<p>{{  value|add:'30'  }}</p>
-<p>{{  lst | length  }}</p>
-<p>{{  set|length  }}</p>
-<p>{{  dict.key1  }}   {{  dict.key2  }}</p>
-<p>{{  lst_str|join:" | "  }}</p>
-
-<hr>
-<p>{{  str|upper  }}</p>
-<p>{{  str|lower  }}</p>
-
-<hr>
-<p>{{  str|slugify  }}</p>
-<p>{{  url  }}</p>
-
-<hr>
 <h1>{{  title  }}</h1>
 
 {%  for el in page_obj  %}
 	{% if el.is_published  %}
-		<hr>
-		{{ el.id }}
-        <a href="{% url 'recipe' el.id %}">{{ el.title }}</a><br>
-		Ingredients: {{ el.ingredients }} <br>
-		Time: {{ el.cooking_time }}
-		Quantity of servings: {{ el.quantity_of_servings }}
-		<a href="{% url 'recipe' el.id %}">Подробнее</a>
-
+		{% if not forloop.first  %}
+			<hr>
+		{%  endif  %}
+		<div>
+			{{ el.id }}
+			<a href="{% url 'recipe' el.id %}">{{ el.title }}</a><br>
+			Ingredients: {{ el.ingredients }} <br>
+			Time: {{ el.cooking_time }}
+			Quantity of servings: {{ el.quantity_of_servings }}
+			<a href="{% url 'recipe' el.id %}">Подробнее</a>
+		</div>
 	{%  endif  %}
 {%  endfor  %}
 
