@@ -10,12 +10,14 @@ from .models import Recipe, Category
 
 def index(request):
     recipes = Recipe.published.filter(is_published=True)
-    paginator = Paginator(recipes, 10)
+    сategory = Category.objects.all()
+    paginator = Paginator(recipes, 3)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     data = {
         "title": "Главная страница",
         "page_obj": page_obj,
+        'сategory': сategory,
     }
     return render(request, "recipes_app/index.html", context=data)
 

@@ -1,6 +1,82 @@
 {% extends 'recipes_app/base.html' %}
 
 {% block content %}
+<style>
+
+body {
+    background: #FFFFFF;
+}
+.title {
+    text-align: right;
+    margin: 35px;
+}
+.title1 {
+    text-align: center;
+    margin: 35px;
+}
+h3 {
+    text-align: right;
+}
+.textcols {
+    background: #F0F8FF;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: 500px 500px 500px;
+}
+
+.column {
+	flex-basis: 100%;
+    vertical-align: top;
+    background: #FFFFFF;
+    padding-left: 15px;
+    margin: 10px;
+    border: 1px dotted #939;
+    height: 200px;
+    flex: 0 0 calc(25% - 5px);
+}
+
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.pagination_num {
+    height: 25px;
+    width: 25px;
+    background-color: #F0F8FF;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.input_button {
+    margin: 0 auto;
+    display: block;
+    margin-top: 50px;
+    background: #DAE1F5;
+    padding: 2px 1em 0 1em;
+}
+
+.input_order_button{
+    margin: 0 auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: #DAE1F5;
+    padding: 5px 2em 0 2em;
+    font-size: 20px;
+}
+
+.pagination_num {
+	text-align: center;
+    height: 25px;
+    width: 25px;
+    background-color: #F0F8FF;
+    border-radius: 50%;
+    display: inline-block;
+}
+</style>
+
 <div>
     <div>
         <br>
