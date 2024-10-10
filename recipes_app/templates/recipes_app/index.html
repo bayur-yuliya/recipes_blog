@@ -80,9 +80,10 @@ h3 {
 
 <h1>{{  title  }}</h1>
 {%  for cat in сategory  %}
-	<a href="{% url 'categories'  %}">{{ cat }}</a><br>
+	<a href="{% url 'categories_list'  %}">{{ cat }}</a>
 {%  endfor  %}
-
+<br><br>
+<div>
 {%  for el in page_obj  %}
 	{% if el.is_published  %}
 		{% if not forloop.first  %}
@@ -98,7 +99,7 @@ h3 {
 		</div>
 	{%  endif  %}
 {%  endfor  %}
-
+</div>
 <nav>
 	<ul>
 		{%  for p in page_obj.paginator.page_range  %}

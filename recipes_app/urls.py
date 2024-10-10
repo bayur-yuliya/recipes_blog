@@ -20,5 +20,6 @@ urlpatterns = [
         name="ingredients_by_slug",
     ),
     path("archive/<year4:year>/", views.archive, name="archive"),
-    path("category/", views.categories, name="categories"),
+    path("category/<int:category_id>/", views.category, name="category"),
+    path("category/", views.categories_list, name="categories_list"),
 ]

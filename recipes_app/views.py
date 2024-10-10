@@ -17,7 +17,7 @@ def index(request):
     data = {
         "title": "Главная страница",
         "page_obj": page_obj,
-        'сategory': сategory,
+        "сategory": сategory,
     }
     return render(request, "recipes_app/index.html", context=data)
 
@@ -33,7 +33,20 @@ def login(request):
     return render(request, "register/login.html", {"form": form})
 
 
-def categories(request):
+def category(request, category_id):
+    recipes = Recipe.published.filter(is_published=True, category_id=category_id)
+    paginator = Paginator(recipes, 3)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    data = {
+        "title": "Главная страница",
+        "page_obj": page_obj,
+    }
+
+    return render(request, "recipes_app/index.html", context=data)
+
+
+def categories_list(request):
     categories = Category.objects.all()
     return render(
         request, "recipes_app/categories.html", context={"categories": categories}
