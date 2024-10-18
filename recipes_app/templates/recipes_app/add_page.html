@@ -1,5 +1,9 @@
-{%  extends "recipes_app/base.html"  %}
+{%  extends "base.html"  %}
 
 {%  block content  %}
-<h1>{{  title  }}</h1>
+<form method="POST">
+    {%  csrf_token %}
+    {{  form.as_p  }}
+    <input type="submit" value="Готово" >
+</form>
 {%  endblock  %}
