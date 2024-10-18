@@ -12,16 +12,14 @@
     <title>{{title}}</title>
 </head>
 <body>
-{%  get_categories as categories  %}
 {% block index %}<a href="{%  url 'index'  %}">Главная страница</a>{% endblock %}
+
 <a href="{%  url 'about'  %}">О сайте</a>
 <a href="{%  url 'add_page'  %}">Добавить статью</a>
 <a href="{%  url 'contact'  %}">Обратная связь</a>
 <a href="{%  url 'login'  %}">Войти</a>
 <br>
-{%  for cat in categories  %}
-    <a href="{%  url 'category' cat.id  %}">{{cat.name}}</a>
-{%  endfor  %}
+{% show_categories %}
 {% block content %}{% endblock %}
 </body>
 </html>
