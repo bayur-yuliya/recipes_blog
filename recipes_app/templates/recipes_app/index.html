@@ -4,9 +4,6 @@
 
 {% block content %}
 <h1>{{  title  }}</h1>
-{%  for cat in сategory  %}
-	<a href="{% url 'category' cat.id  %}">{{ cat }}</a>
-{%  endfor  %}
 <br><br>
 <div class="pagination" >
 {%  include 'recipes_app/includes/paginator.html' %}
