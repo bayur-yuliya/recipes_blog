@@ -13,13 +13,18 @@
 </head>
 <body>
 {% block index %}<a href="{%  url 'index'  %}">Главная страница</a>{% endblock %}
-
 <a href="{%  url 'about'  %}">О сайте</a>
 <a href="{%  url 'add_page'  %}">Добавить статью</a>
 <a href="{%  url 'contact'  %}">Обратная связь</a>
 <a href="{%  url 'login'  %}">Войти</a>
 <br>
-{% show_categories %}
+{%  if cat_selected == 0 or cat_selected is None %}
+<li class="selected">Все категории</li>
+{%  else %}
+<a href="{%  url 'index'  %}">Все категории</a>
+{%  endif  %}
+{% show_categories cat_selected  %}
+
 {% block content %}{% endblock %}
 </body>
 </html>

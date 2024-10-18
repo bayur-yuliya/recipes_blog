@@ -19,6 +19,7 @@ def index(request):
     data = {
         "title": "Главная страница",
         "page_obj": page_obj,
+        "cat_selected": 0,
     }
     return render(request, "recipes_app/index.html", context=data)
 
@@ -42,6 +43,7 @@ def category(request, category_id):
     data = {
         "title": "Главная страница",
         "page_obj": page_obj,
+        "cat_selected": category_id,
     }
 
     return render(request, "recipes_app/index.html", context=data)
