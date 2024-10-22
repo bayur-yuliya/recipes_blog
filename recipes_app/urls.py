@@ -12,7 +12,7 @@ urlpatterns = [
     path("edit_recipe/<int:pk>", views.edit_recipe, name="edit_recipe"),
     path("contact/", views.contact, name="contact"),
     path("login/", views.login, name="login"),
-    path("recipe/<int:pk>/", views.post, name="recipe"),
+    path("recipe/<slug:recipe_slug>/", views.post, name="recipe"),
     path("ingredients/<int:ingredient>/", views.ingredients, name="ingredients"),
     path(
         "ingredients/<slug:ingredient_slug>/",

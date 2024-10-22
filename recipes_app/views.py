@@ -77,8 +77,8 @@ def edit_recipe(request, pk):
     return redirect(reverse("recipe", kwargs={"pk": pk}))
 
 
-def post(request, pk):
-    recipes = get_object_or_404(Recipe, pk=pk)
+def post(request, recipe_slug):
+    recipes = get_object_or_404(Recipe, slug=recipe_slug)
     data = {"data": recipes}
     return render(request, "recipes_app/post.html", context=data)
 

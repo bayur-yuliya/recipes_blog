@@ -17,12 +17,12 @@
 		{%  endif  %}
 		<div>
 			{{ el.id }}
-			<a href="{% url 'recipe' el.id %}">{{ el.title }}</a><br>
+			<a href="{{ el.get_absolute_url }}">{{ el.title }}</a><br>
 			Ingredients: {{ el.ingredients }} <br>
 			Time: {{ el.cooking_time }}
 			Quantity of servings: {{ el.quantity_of_servings }}
 			{{  el.recipe_text|truncatewords:20  }}
-			<a href="{% url 'recipe' el.id %}">Подробнее</a>
+			<a href="{{ el.get_absolute_url}}">Подробнее</a>
 		</div>
 	{%  endif  %}
 {%  endfor  %}
