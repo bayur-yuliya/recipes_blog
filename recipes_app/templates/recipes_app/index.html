@@ -21,8 +21,8 @@
 			Ingredients: {{ el.ingredients }} <br>
 			Time: {{ el.cooking_time }}
 			Quantity of servings: {{ el.quantity_of_servings }}
-			{{  el.recipe_text|truncatewords:20  }}
-			<a href="{{ el.get_absolute_url}}">Подробнее</a>
+			{{  el.recipe_text|linebreaks|truncatewords:20  }}
+			<a href="{{ el.get_absolute_url}}">Подробнее...</a>
 		</div>
 	{%  endif  %}
 {%  endfor  %}

@@ -74,7 +74,7 @@ def edit_recipe(request, pk):
     form = RecipeForm(request.POST, instance=recipe)
     if form.is_valid():
         form.save()
-    return redirect(reverse("recipe", kwargs={"pk": pk}))
+    return redirect(reverse("recipe", kwargs={"recipe_slug": recipe.slug}))
 
 
 def post(request, recipe_slug):
