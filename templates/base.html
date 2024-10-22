@@ -1,3 +1,6 @@
+{%  load static  %}
+{%  load  recipe_tag  %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,14 +8,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type='text/css' href="{% static 'recipes_app/css/styles.css'  %}" rel='stylesheet' />
     <title>{{title}}</title>
 </head>
 <body>
+{% block index %}<a href="{%  url 'index'  %}">Главная страница</a>{% endblock %}
 <a href="{%  url 'about'  %}">О сайте</a>
 <a href="{%  url 'add_page'  %}">Добавить статью</a>
 <a href="{%  url 'contact'  %}">Обратная связь</a>
 <a href="{%  url 'login'  %}">Войти</a>
-{% block content %}
-{% endblock %}
+<br>
+{%  if cat_selected == 0 or cat_selected is None %}
+<li class="selected">Все категории</li>
+{%  else %}
+<a href="{%  url 'index'  %}">Все категории</a>
+{%  endif  %}
+{% show_categories cat_selected  %}
+
+{% block content %}{% endblock %}
 </body>
 </html>

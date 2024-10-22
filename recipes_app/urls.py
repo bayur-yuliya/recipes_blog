@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("about/", views.about, name="about"),
     path("add_page/", views.add_page, name="add_page"),
+    path("edit_recipe/<int:pk>", views.edit_recipe, name="edit_recipe"),
     path("contact/", views.contact, name="contact"),
     path("login/", views.login, name="login"),
     path("recipe/<slug:recipe_slug>/", views.post, name="recipe"),
@@ -19,5 +20,6 @@ urlpatterns = [
         name="ingredients_by_slug",
     ),
     path("archive/<year4:year>/", views.archive, name="archive"),
-    path("category/", views.categories, name="categories"),
+    path("category/<int:category_id>/", views.category, name="category"),
+    path("category/", views.categories_list, name="categories_list"),
 ]

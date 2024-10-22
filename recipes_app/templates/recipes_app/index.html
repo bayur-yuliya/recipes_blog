@@ -1,18 +1,38 @@
-{% extends 'recipes_app/base.html' %}
+{% extends 'base.html' %}
+
+{% block index %}{% endblock %}
 
 {% block content %}
-<h1>{{title}}</h1>
-
-{%  for el in recipes  %}
+<h1>{{  title  }}</h1>
+<br><br>
+<div class="pagination" >
+{%  include 'recipes_app/includes/paginator.html' %}
+</div>
+<div>
+{% if page_obj  %}
+{%  for el in page_obj  %}
 	{% if el.is_published  %}
-		<hr>
-		{{ el.id }}
-		{{ el.title }} <br>
-		Ingredients: {{ el.ingredients }} <br>
-		Recipe: {{ el.recipe_text }} <br>
-		Time: {{ el.cooking_time }}
-		Quantity of servings: {{ el.quantity_of_servings }}
-		<a href="{{ el.get_absolute_url  }}">Подробнее</a>
+		{% if not forloop.first  %}
+			<hr>
+		{%  endif  %}
+		<div>
+			{{ el.id }}
+			<a href="{{ el.get_absolute_url }}">{{ el.title }}</a><br>
+			Ingredients: {{ el.ingredients }} <br>
+			Time: {{ el.cooking_time }}
+			Quantity of servings: {{ el.quantity_of_servings }}
+			{{  el.recipe_text|linebreaks|truncatewords:20  }}
+			<a href="{{ el.get_absolute_url}}">Подробнее...</a>
+		</div>
 	{%  endif  %}
 {%  endfor  %}
+{%  else  %}
+	<h2>Пока нет рецептов из этой категории</h2>
+{%  endif  %}
+</div>
+
+<div class="pagination" >
+{%  include 'recipes_app/includes/paginator.html' %}
+</div>
+
 {% endblock %}

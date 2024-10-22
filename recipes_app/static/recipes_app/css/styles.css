@@ -1,8 +1,3 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<style>
-
 body {
     background: #FFFFFF;
 }
@@ -75,28 +70,3 @@ h3 {
     border-radius: 50%;
     display: inline-block;
 }
-</style>
-
-<div>
-    <div>
-        <br>
-        {{ data.id }}
-        <a href="{%  url 'edit_recipe'  data.pk %}">{{ data.title }} </a><br>
-        <br>
-    </div>
-    <div>
-        Ingredients: {{ data.ingredients }}<br>
-    </div>
-    <hr>
-    <div>
-        Time: {{ data.cooking_time }}<br>
-        Quantity of servings: {{ data.quantity_of_servings }}<br>
-    </div>
-    <hr>
-    <div>
-        Recipe: {{ data.recipe_text|linebreaks }} <br>
-    </div>
-
-</div>
-{% endblock %}
-<div></div>
